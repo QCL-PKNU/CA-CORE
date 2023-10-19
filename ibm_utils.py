@@ -221,6 +221,12 @@ def ibm_executor(circuit, cmap, optimization_level, backend = AerSimulator(), no
     #setup
     # backend = Aer.get_backend("qasm_simulator")
     # backend = AerSimulator()
+    #set running on GPU as default
+    try:
+        backend.set_options(device="GPU")
+    except:
+        print("GPU is not supported on this device.")
+
     if noise_model.lower() == "depolarizing":
         # noise_model = initialized_depolarizing_noise(noise_level=noise_level)
         
