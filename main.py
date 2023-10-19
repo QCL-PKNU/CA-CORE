@@ -56,21 +56,6 @@ if __name__ == "__main__":
 
     ### Noisy benchcmark ###
 
-    #result: good
-    row = 2
-    col = 5
-    qasm_dir = "QASMBench/small/adder_n10/adder_n10_transpiled.qasm"
-    expected_result = "10000"
-    qc = QuantumCircuit.from_qasm_file(qasm_dir)
-
-    #  #evaluate with many depolarizing noise
-    error_rate = [0.0001, 0.0003, 0.0005, 0.0007, 0.001]
-    for error_rate in error_rate:
-        #evaluate 10 times for each error rate
-        for i in range (0,10):
-            print(f"######## Depolarizing Noise {error_rate} Evaluation ########")
-            run(qc, row, col, expected_result=expected_result, noise_model="depolarizing", noise_level=error_rate, optimization_level=0)
-
     row = 4
     col = 5
     qasm_dir = "QASMBench/medium/bigadder_n18/bigadder_n18_transpiled.qasm"
